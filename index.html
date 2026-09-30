@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>SQUISH ARCHIVE</title>
+
+<style>
+
+/* ==============================
+   BASIC
+============================== */
+
+@font-face {
+    font-family: 'OngleipEoyeonce';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    background-image:url("images/background.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    color:#342d29;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    cursor:none;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+header{
+    position:absolute;
+
+    top:28px;
+    left:35px;
+    right:35px;
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:flex-start;
+
+    z-index:100;
+}
+
+.logo{
+    font-family:'OngleipEoyeonce';
+    font-size:48px;
+    font-weight:normal;
+    letter-spacing:-1px;
+}
+
+.description{
+    margin-top:5px;
+
+    font-size:16px;
+
+    opacity:0.5;
+}
+
+.guide{
+    font-size:16px;
+
+    padding:8px 14px;
+
+    border:1px solid #aaa;
+
+    border-radius:100px;
+}
+
+
+/* ==============================
+   ARCHIVE
+============================== */
+
+.archive{
+    position:relative;
+
+    width:100vw;
+    height:100vh;
+}
+
+
+/* ==============================
+   OBJECT
+============================== */
+
+.object{
+    position:absolute;
+
+    text-align:center;
+}
+
+.object img{
+    width:120%;
+
+    display:block;
+
+    object-fit:contain;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    transition:transform 0.15s;
+}
+
+.object:hover img{
+    transform:scale(1.04);
+}
+
+
+/* ==============================
+   OBJECT TEXT
+============================== */
+
+.number{
+    font-size:16px;
+
+    opacity:0.4;
+
+    margin-bottom:5px;
+}
+
+.object-name{
+    margin-top:16px;
+
+    font-size:11px;
+
+    letter-spacing:0.3px;
+}
+
+.action-name{
+    margin-top:9px;
+
+    font-size:12px;
+
+    opacity:0.45;
+}
+
+
+/* ==============================
+   OBJECT POSITION
+============================== */
+
+
+/* 왁뿌볼 */
+
+#wax-object{
+    width:250px;
+
+    left:8%;
+    top:18%;
+
+    transform:rotate(-5deg);
+}
+
+
+/* 슬랑이 */
+
+#slang-object{
+    width:290px;
+
+    left:40%;
+    top:16%;
+
+    transform:rotate(3deg);
+}
+
+
+/* 감자 */
+
+#potato-object{
+    width:200px;
+
+    left:72%;
+    top:24%;
+
+    transform:rotate(-4deg);
+}
+
+/* 푸딩 */
+
+#pudding-object{
+    width:200px;
+
+    left:24%;
+    top:50%;
+
+    transform:rotate(4deg);
+}
+
+
+/* 말랑이 */
+
+#squishy-object{
+    width:250px;
+
+    left:55%;
+    top:60%;
+
+    transform:rotate(-3deg);
+}
+
+
+/* ==============================
+   CUSTOM CURSOR
+============================== */
+
+#hand{
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:300px;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    transform:translate(-20px,-15px);
+}
+
+
+/* ==============================
+   SOUND WORD
+============================== */
+
+#soundWord{
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    z-index:9000;
+
+    pointer-events:none;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    opacity:0;
+}
+
+#soundWord.show{
+    animation:wordPop 0.55s;
+}
+
+
+@keyframes wordPop{
+
+    0%{
+        opacity:0;
+
+        transform:
+        translate(-50%,0)
+        scale(0.5)
+        rotate(-5deg);
+    }
+
+    30%{
+        opacity:1;
+
+        transform:
+        translate(-50%,-35px)
+        scale(1.2)
+        rotate(3deg);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+        translate(-50%,-80px)
+        scale(1);
+    }
+}
+
+
+/* ==============================
+   BOTTOM
+============================== */
+
+.bottom{
+    position:absolute;
+
+    bottom:25px;
+
+    left:35px;
+    right:35px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-size:12px;
+
+    opacity:0.5;
+}
+
+
+/* ==============================
+   STATE IMAGE SIZE
+============================== */
+
+
+/* 슬랑이 */
+
+.slang-default{
+    width:100% !important;
+}
+
+.slang-stretch1{
+    width:145% !important;
+}
+
+.slang-stretch2{
+    width:145% !important;
+}
+
+
+/* 감자 */
+
+.potato-default{
+    width:140% !important;
+}
+
+.potato-pressed{
+    width:200% !important;
+}
+
+
+/* 푸딩 */
+
+.pudding-default{
+    width:160% !important;
+}
+
+.pudding-pressed1{
+    width:120% !important;
+}
+
+.pudding-pressed2{
+    width:150% !important;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==============================
+     기본 커서
+============================== -->
+
+<img
+src="images/cursor_default.png"
+id="hand"
+alt="">
+
+
+<!-- ==============================
+     SOUND WORD
+============================== -->
+
+<div id="soundWord"></div>
+
+
+<!-- ==============================
+     HEADER
+============================== -->
+
+<header>
+
+<div>
+
+    <div class="logo">
+        꽁용꽁용 소품샵
+    </div>
+
+    <div class="description">
+        부산 동래구 안락동 221-15, 카페거리 소품샵
+    </div>
+
+</div>
+
+
+</header>
+
+
+
+<!-- ==============================
+     ARCHIVE
+============================== -->
+
+<div class="archive">
+
+
+<!-- ==============================
+     01 WAX BALL
+============================== -->
+
+<div
+class="object"
+id="wax-object">
+
+
+<div class="number">
+01
+</div>
+
+
+<img
+src="images/waxball_default.png"
+id="waxball"
+alt="">
+
+
+<div class="object-name">
+청사과 왁뿌🍏
+</div>
+
+
+<div class="action-name">
+8000원
+</div>
+
+
+<audio
+src="sounds/waxball_crack1.mp3"
+id="waxSound1">
+</audio>
+
+
+<audio
+src="sounds/waxball_crack2.mp3"
+id="waxSound2">
+</audio>
+
+
+</div>
+
+
+
+<!-- ==============================
+     02 SLANG
+============================== -->
+
+<div
+class="object"
+id="slang-object">
+
+
+<div class="number">
+02
+</div>
+
+
+<img
+src="images/slang_default.png"
+id="slang"
+class="slang-default"
+alt="">
+
+<div class="object-name">
+치즈 크런치 슬랑이🧀
+</div>
+
+
+<div class="action-name">
+6000
+</div>
+
+
+<audio
+src="sounds/slang_stretch1.mp3"
+id="slangSound1">
+</audio>
+
+
+<audio
+src="sounds/slang_stretch2.mp3"
+id="slangSound2">
+</audio>
+
+
+</div>
+
+
+
+<!-- ==============================
+     03 POTATO
+============================== -->
+
+<div
+class="object"
+id="potato-object">
+
+
+<div class="number">
+03
+</div>
+
+
+<img
+src="images/potato_default.png"
+id="potato"
+class="potato-default"
+alt="">
+
+
+<div class="object-name">
+감자빵 말랑이🥔
+</div>
+
+
+<div class="action-name">
+4000원
+</div>
+
+
+<audio
+src="sounds/potato_press.mp3"
+id="potatoSound">
+</audio>
+
+
+</div>
+
+
+
+<!-- ==============================
+     04 PUDDING
+============================== -->
+
+<div
+class="object"
+id="pudding-object">
+
+
+<div class="number">
+04
+</div>
+
+
+<img
+src="images/pudding_default.png"
+id="pudding"
+class="pudding-default"
+alt="">
+
+
+<div class="object-name">
+반짝이 슬라임🎀
+</div>
+
+
+<div class="action-name">
+3000원
+</div>
+
+
+<audio
+src="sounds/pudding_poke.mp3"
+id="puddingSound">
+</audio>
+
+<audio
+src="sounds/pudding_poke2.mp3"
+id="puddingSound2">
+</audio>
+
+</div>
+
+
+
+<!-- ==============================
+     05 SQUISHY
+============================== -->
+
+<div
+class="object"
+id="squishy-object">
+
+
+<div class="number">
+05
+</div>
+
+
+<img
+src="images/squishy_default.png"
+id="squishy"
+alt="">
+
+
+<div class="object-name">
+빵떡고양이 스퀴시😻
+</div>
+
+
+<div class="action-name">
+5000원
+</div>
+
+
+<audio
+src="sounds/squishy_squeeze.mp3"
+id="squishySound">
+</audio>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ==============================
+     BOTTOM
+============================== -->
+
+<div class="bottom">
+
+<span>
+24100842 정지현
+</span>
+
+<span>
+Asmr Collection 2026
+</span>
+
+</div>
+
+
+
+<script>
+
+
+/* ==============================
+   ELEMENTS
+============================== */
+
+
+/* 커서 */
+
+let hand =
+document.getElementById("hand");
+
+
+/* 효과음 글씨 */
+
+let soundWord =
+document.getElementById("soundWord");
+
+
+/* 물건 */
+
+let waxball =
+document.getElementById("waxball");
+
+let slang =
+document.getElementById("slang");
+
+let potato =
+document.getElementById("potato");
+
+let pudding =
+document.getElementById("pudding");
+
+let squishy =
+document.getElementById("squishy");
+
+
+/* 사운드 */
+
+let waxSound1 =
+document.getElementById("waxSound1");
+
+let waxSound2 =
+document.getElementById("waxSound2");
+
+
+let slangSound1 =
+document.getElementById("slangSound1");
+
+let slangSound2 =
+document.getElementById("slangSound2");
+
+
+let potatoSound =
+document.getElementById("potatoSound");
+
+
+let puddingSound =
+document.getElementById("puddingSound");
+
+
+let puddingSound2 =
+document.getElementById("puddingSound2");
+
+let squishySound =
+document.getElementById("squishySound");
+
+
+
+/* ==============================
+   CURSOR FOLLOW
+============================== */
+
+document.onmousemove =
+function(e){
+
+    hand.style.left =
+    e.clientX + "px";
+
+    hand.style.top =
+    e.clientY + "px";
+
+};
+
+
+
+/* ==============================
+   SOUND WORD
+============================== */
+
+function showWord(text,e){
+
+    soundWord.innerHTML =
+    text;
+
+
+    soundWord.style.left =
+    e.clientX + "px";
+
+
+    soundWord.style.top =
+    e.clientY + "px";
+
+
+    soundWord.classList.remove(
+    "show"
+    );
+
+
+    void soundWord.offsetWidth;
+
+
+    soundWord.classList.add(
+    "show"
+    );
+
+}
+
+
+
+let waxState = 0;
+
+
+waxball.onclick =
+function(e){
+
+
+  if(waxState == 0){
+
+
+        /* 왁뿌볼 1차 */
+
+        waxball.src =
+        "images/waxball_crack1.png";
+
+
+        /* 커서 1차 */
+
+        hand.src =
+        "images/cursor_wax_crack1.png";
+
+        hand.style.width = "290px";
+
+
+        /* 사운드 1차 */
+
+        waxSound1.currentTime = 0;
+
+        waxSound1.play();
+
+
+        showWord(
+        "❤️",
+        e
+        );
+
+
+        waxState = 1;
+
+    }
+
+
+    else if(waxState == 1){
+
+
+        /* 왁뿌볼 2차 */
+
+        waxball.src =
+        "images/waxball_crack2.png";
+
+
+        /* 커서 2차 */
+
+hand.src =
+        "images/cursor_wax_crack2.png";
+
+        hand.style.width = "290px";
+
+
+        /* 사운드 2차 */
+
+        waxSound2.currentTime = 0;
+
+        waxSound2.play();
+
+
+    
+
+        waxState = 2;
+
+    }
+
+
+    else{
+
+
+        /* 처음으로 */
+
+        waxball.src =
+        "images/waxball_default.png";
+
+
+       hand.src =
+"images/cursor_default.png";
+
+hand.style.width = "290px";
+
+
+        waxState = 0;
+
+    }
+
+};
+
+
+
+/* ==================================================
+   02 SLANG
+
+   STATE 0
+   slang_default.png
+
+        ↓ 클릭
+
+   STATE 1
+   slang_stretch1.png
+   cursor_slang_stretch1.png
+
+        ↓ 클릭
+
+   STATE 2
+   slang_stretch2.png
+   cursor_slang_stretch2.png
+
+        ↓ 클릭
+
+   STATE 0
+================================================== */
+
+
+let slangState = 0;
+
+
+slang.onclick =
+function(e){
+
+
+    if(slangState == 0){
+
+
+        /* 슬랑이 1차 */
+
+        slang.src =
+        "images/slang_stretch1.png";
+
+        slang.className =
+"slang-stretch1";
+
+
+        /* 커서 1차 */
+
+        hand.src =
+"images/cursor_slang_stretch1.png";
+
+hand.style.width = "400px";
+
+
+        /* 사운드 1차 */
+
+        slangSound1.currentTime = 0;
+
+        slangSound1.play();
+
+
+        showWord(
+        "🫠",
+        e
+        );
+
+
+        slangState = 1;
+
+    }
+
+
+    else if(slangState == 1){
+
+
+        /* 슬랑이 2차 */
+
+        slang.src =
+        "images/slang_stretch2.png";
+
+        slang.className =
+"slang-stretch2";
+
+
+        /* 커서 2차 */
+
+       hand.src =
+"images/cursor_slang_stretch2.png";
+
+hand.style.width = "380px";
+
+
+        /* 사운드 2차 */
+
+        slangSound2.currentTime = 0;
+
+        slangSound2.play();
+
+
+
+        slangState = 2;
+
+    }
+
+
+    else{
+
+
+        /* 처음으로 */
+
+        slang.src =
+        "images/slang_default.png";
+
+        slang.className =
+"slang-default";
+
+        hand.src =
+        "images/cursor_default.png";
+        hand.style.width = "290px";
+
+
+        slangState = 0;
+
+    }
+
+};
+
+
+/* ==================================================
+   03 POTATO
+
+   클릭 1번 → 눌린 감자
+   클릭 2번 → 원래 감자
+================================================== */
+
+
+let potatoState = 0;
+
+
+potato.onclick =
+function(e){
+
+
+    if(potatoState == 0){
+
+
+        potato.src =
+        "images/potato_pressed.png";
+
+        potato.className =
+"potato-pressed";
+
+
+                hand.src =
+"images/cursor_slang_stretch1.png";
+
+hand.style.width = "400px";
+
+
+        potatoSound.currentTime = 0;
+
+        potatoSound.play();
+
+
+        showWord(
+        "🥔",
+        e
+        );
+
+
+        potatoState = 1;
+
+    }
+
+else{
+
+
+    potato.src =
+    "images/potato_default.png";
+
+    potato.className =
+"potato-default";
+
+
+    hand.src =
+    "images/cursor_default.png";
+
+    hand.style.width = "290px";
+
+
+    potatoSound.currentTime = 0;
+
+    potatoSound.play();
+
+
+
+    potatoState = 0;
+
+}
+
+    
+
+};
+
+
+
+/* ==================================================
+   04 PUDDING
+
+   클릭 1번 → 1차 눌린 푸딩
+   클릭 2번 → 2차 눌린 푸딩
+   클릭 3번 → 처음으로
+================================================== */
+
+
+let puddingState = 0;
+
+
+pudding.onclick =
+function(e){
+
+
+    if(puddingState == 0){
+
+
+        pudding.src =
+        "images/pudding_pressed.png";
+
+        pudding.className =
+"pudding-pressed1";
+
+
+        hand.src =
+        "images/cursor_pudding_poke.png";
+
+        hand.style.width = "290px";
+
+
+        puddingSound.currentTime = 0;
+
+        puddingSound.play();
+
+
+        showWord(
+        "🤭",
+        e
+        );
+
+
+        puddingState = 1;
+
+    }
+
+
+    else if(puddingState == 1){
+
+
+        pudding.src =
+        "images/pudding_pressed2.png";
+
+        pudding.className =
+"pudding-pressed2";
+
+
+       hand.src =
+"images/cursor_pudding_poke1.png";
+
+hand.style.width = "290px";
+
+        puddingSound2.currentTime = 0;
+
+        puddingSound2.play();
+
+
+
+
+        puddingState = 2;
+
+    }
+
+
+    else{
+
+
+        pudding.src =
+        "images/pudding_default.png";
+
+        pudding.className =
+"pudding-default";
+
+
+        hand.src =
+"images/cursor_default.png";
+
+hand.style.width = "290px";
+
+        puddingState = 0;
+
+    }
+
+};
+
+/* ==================================================
+   05 SQUISHY
+
+   누르고 있는 동안
+   squishy_squeezed.png
+   cursor_squishy_squeeze.png
+
+   떼면 원래대로
+================================================== */
+
+
+squishy.onmousedown =
+function(e){
+
+
+    squishy.src =
+    "images/squishy_squeezed.png";
+
+
+   hand.src =
+"images/cursor_squishy_squeeze.png";
+
+hand.style.width = "320px";
+
+
+    squishySound.currentTime = 0;
+
+    squishySound.play();
+
+
+    showWord(
+    "🤩",
+    e
+    );
+
+};
+
+
+
+squishy.onmouseup =
+function(){
+
+
+    squishy.src =
+    "images/squishy_default.png";
+
+
+    hand.src =
+    "images/cursor_default.png";
+
+    hand.style.width = "290px";
+
+
+};
+
+
+
+squishy.onmouseleave =
+function(){
+
+
+    squishy.src =
+    "images/squishy_default.png";
+
+
+    hand.src =
+    "images/cursor_default.png";
+
+hand.style.width = "290px";
+
+
+};
+
+
+</script>
+
+</body>
+
+</html>
